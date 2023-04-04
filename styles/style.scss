@@ -1,0 +1,189 @@
+// Importing other SCSS files into this file
+@import "./reset";
+@import "./mediaQueries";
+@import "./mixins";
+@import "./variables";
+
+body {
+  // Applying a mixin called "flex" with two arguments "center" for both "align-items" and "justify-content" CSS properties.
+  @include flex(center, center);
+
+  font-family: $ff-Karla;
+  background: $light-gray;
+  font-size: 1rem;
+}
+
+main {
+  margin: 2rem;
+}
+
+/* Main container for the pricing grid */
+.single-price-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "join"
+    "subscription"
+    "why-choose-us";
+
+  box-shadow: 0px 0px 0.375rem rgba(0, 0, 0, 0.02),
+    0px 0px 1.5rem rgba(0, 0, 0, 0.03), 0px 0px 6.25rem rgba(0, 0, 0, 0.05);
+
+  @include md(sm) {
+    width: 635px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+      "join join"
+      "subscription why-choose-us";
+  }
+
+  &__join,
+  &__subscription,
+  &__why-choose-us {
+    padding: 1.5rem;
+
+    @include md(sm) {
+      padding: 2.5rem;
+    }
+  }
+
+  /* Container for the "Join our community" section */
+  &__join {
+    grid-area: join;
+    background-color: white;
+    border-radius: 0.5rem 0.5rem 0 0;
+
+    /* Title for the "Join our community" section */
+    &-title {
+      font-size: 1.35rem;
+      color: $cyan;
+
+      @include md(sm) {
+        font-size: 1.5rem;
+      }
+    }
+
+    &-title,
+    &-subtitle {
+      margin-bottom: 1.25rem;
+      font-weight: $fw-700;
+    }
+
+    /* Subtitle for the "Join our community" section */
+    &-subtitle {
+      font-size: 1rem;
+      color: $bright-yellow;
+
+      @include md(sm) {
+        font-size: 1.125rem;
+      }
+    }
+
+    /* Text for the "Join our community" section */
+    &-text {
+      line-height: 2;
+      font-size: 0.825rem;
+      color: $grayish-blue;
+
+      @include md(sm) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  /* Container for the "Monthly subscription" section */
+  &__subscription {
+    grid-area: subscription;
+
+    background-color: $cyan;
+
+    @include md(sm) {
+      border-radius: 0 0 0 0.5rem;
+    }
+
+    /* Subtitle for the "Monthly subscription" section */
+    &-subtitle {
+      margin-bottom: 1rem;
+      font-weight: $fw-700;
+      color: white;
+    }
+
+    /* Text for the "Monthly subscription" section */
+    &-text {
+      margin-bottom: 1.75rem;
+      color: $light-gray;
+    }
+  }
+
+  /* Container for the price amount */
+  &__price {
+    margin-bottom: 0.5rem;
+    @include flex(center);
+    gap: 0.75rem;
+  }
+
+  /* Container for the price amount */
+  &__amount {
+    font-size: 2rem;
+    font-weight: $fw-700;
+    color: white;
+  }
+
+  /* Container for the pricing period */
+  &__period {
+    color: $light-gray;
+  }
+
+  /* Sign-up button for the pricing plan */
+  &__signup-btn {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-weight: $fw-700;
+    background-color: $bright-yellow;
+    border-radius: 0.5rem;
+    color: white;
+
+    box-shadow: 0rem 0.625rem 0.625rem rgba(0, 0, 0, 0.1);
+
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background-color: hsl(71, 73%, 45%);
+    }
+  }
+
+  /* Container for the "Why choose us?" section */
+  &__why-choose-us {
+    grid-area: why-choose-us;
+
+    background-color: hsla(179, 62%, 43%, 0.8);
+    border-radius: 0 0 0.5rem 0.5rem;
+
+    @include md(sm) {
+      border-radius: 0 0 0.5rem 0;
+    }
+
+    /* Subtitle for the "Why choose us?" section */
+    &-subtitle {
+      margin-bottom: 1rem;
+      font-weight: $fw-700;
+      color: white;
+    }
+  }
+
+  /* List of features for the pricing plan */
+  &__list {
+    color: $light-gray;
+  }
+
+  /* Individual feature item for the pricing plan */
+  &__item {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
